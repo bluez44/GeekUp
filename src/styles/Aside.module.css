@@ -1,0 +1,11 @@
+.aside {
+    transition: all .4s ease-in-out;
+}
+
+@media (max-width: 767px) {
+    .aside {
+        position: absolute;
+        top: 0;
+        left: -200px;
+    }
+}
