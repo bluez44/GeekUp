@@ -6,7 +6,7 @@ import PathContext from "../context/PathContext";
 
 function Layout() {
   const [pathName, setPathName] = useState(
-    window.location.pathname.split("/")[1]
+    window.location.pathname.split("/")[1] || 'albums'
   );
 
   return (

@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { LiaEyeSolid } from "react-icons/lia";
-import { Table } from "react-bootstrap";
 
 import { getAlbumsByUserId, getUsersById } from "../api/PlaceholderApi";
 import Loading from "../components/Loading";
@@ -15,6 +14,10 @@ function UserDetail() {
   const [isLoading, setIsLoading] = useState(true);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.title = `#${id} User Detail`;
+  }, []);
 
   useEffect(() => {
     const res = getUsersById(id);

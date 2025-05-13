@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Table } from "react-bootstrap";
 import { LiaEyeSolid } from "react-icons/lia";
 
 import { getUsers } from "../api/PlaceholderApi";

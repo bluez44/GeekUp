@@ -17,6 +17,7 @@ function AlbumDetail() {
   const [photos, setPhotos] = useState([]);
 
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
 
   useEffect(() => {
     document.title = `#${id} Albums Detail`;
@@ -122,18 +123,45 @@ function AlbumDetail() {
               <div className="row">
                 {photos.map((photo) => (
                   <div
-                    className="col col-12 col-sm-6 col-md-4 col-lg-3"
+                    className="col col-12 col-sm-6 col-md-4 col-lg-3 btn btn-outline-light text-black"
                     key={photo.id}
+                    onClick={() => setSelectedPhoto(photo)}
                   >
                     <img
-                      src={photo.url}
+                      src={photo.thumbnailUrl}
                       alt={photo.title}
                       key={photo.id}
                       className="me-3"
+                      style={{ cursor: "pointer" }}
                     />
                   </div>
                 ))}
               </div>
+
+              {selectedPhoto && (
+                <div
+                  className="overlay text-white"
+                  onClick={() => setSelectedPhoto(null)}
+                  style={{
+                    position: "fixed",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    backgroundColor: "rgba(0, 0, 0, 0.8)",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    zIndex: 9999,
+                  }}
+                >
+                  <img
+                    src={selectedPhoto.url}
+                    alt={selectedPhoto.title}
+                    style={{ maxWidth: "90%", maxHeight: "90%" }}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </>
